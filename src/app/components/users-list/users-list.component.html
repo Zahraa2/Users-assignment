@@ -1,5 +1,7 @@
 <div class="users-table">
-  <div class="desktop-view" fxLayout="column" fxShow fxHide.lt-md>
+  <mat-progress-bar *ngIf="isLoadingResults" mode="indeterminate"></mat-progress-bar>
+
+  <div class="desktop-view" *ngIf="!isLoadingResults">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- ID Column -->
       <ng-container matColumnDef="id">
@@ -34,11 +36,12 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="hover-effect" (click)="goToUserDetails(row)"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="hover-effect" (click)="goToUserDetails(row)">
+      </tr>
     </table>
   </div>
 
-  <div class="mobile-view" fxLayout="column" fxShow="true" fxHide.gt-sm>
+  <div class="mobile-view"  *ngIf="!isLoadingResults">
     <mat-card *ngFor="let user of dataSource.data" (click)="goToUserDetails(user)" class="user-card">
       <mat-card-header>
         <div mat-card-avatar class="avatar">
@@ -53,5 +56,10 @@
     </mat-card>
   </div>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <mat-paginator *ngIf="!isLoadingResults" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+    <div class="spinner" *ngIf="isLoadingResults">
+      <mat-spinner></mat-spinner>
+    </div>
+
 </div>

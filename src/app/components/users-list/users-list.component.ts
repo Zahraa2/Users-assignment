@@ -19,6 +19,7 @@ export class UsersListComponent implements OnInit {
     'last_name',
     'email',
   ];
+  isLoadingResults = true;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -28,12 +29,12 @@ export class UsersListComponent implements OnInit {
     this.fetchUsers();
   }
 
-  fetchUsers(page: number = 1) {
-    this.userService.getUsers(page).subscribe((response: any) => {
+ fetchUsers(page: number = 1) {
+    this.isLoadingResults = true;
+    this.userService.getUsers(page).subscribe(response => {
       this.dataSource.data = response.data;
-      if (this.paginator) {
-        this.paginator.length = response.total;
-      }
+      this.dataSource.paginator = this.paginator;
+      this.isLoadingResults = false;
     });
   }
 

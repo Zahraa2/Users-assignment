@@ -1,0 +1,14 @@
+.user-card {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+}
+
+mat-progress-spinner {
+  display: block;
+  margin: 30px auto;
+}

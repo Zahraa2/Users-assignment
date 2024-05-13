@@ -1,0 +1,61 @@
+.users-table {
+  width: 100%;
+  margin: auto;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+
+  .mat-elevation-z8 {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    th.mat-header-cell, td.mat-cell {
+      text-align: center;
+      padding: 8px;
+    }
+  }
+
+    tr.hover-effect {
+      cursor: pointer;
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+
+  .user-card {
+    margin: 10px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+  }
+
+  .avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+}
+
+
+
+.users-table .desktop-view {
+  display: block;
+}
+
+.users-table .mobile-view {
+  display: none;
+}
+
+@media (max-width: 599px) {
+  .users-table .desktop-view {
+    display: none;
+  }
+  .users-table .mobile-view {
+    display: block;
+  }
+}

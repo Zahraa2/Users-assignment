@@ -21,10 +21,19 @@ export class UserDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       const userId = params.get('id');
       if (userId) {
-        this.userService.getUsers(1).subscribe(response => {
-          this.user = response.data.find(user => user.id === parseInt(userId, 10)) || null;
-        });
+       this.getUserDate(userId);
+      }
+    });
+  }
 
+  getUserDate(userId: string){
+    this.userService.getUserById(parseInt(userId, 10)).subscribe({
+      next: (user) => {
+        this.user = user;
+      },
+      error: (err) => {
+        console.error('Error fetching user details:', err);
+        this.router.navigate(['/users']);
       }
     });
   }

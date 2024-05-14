@@ -3,6 +3,29 @@
   margin: 20px auto;
 }
 
+.card-header {
+  text-align: center;
+
+  img {
+    width: 100px;
+    height: 100px;
+  }
+
+  mat-card-title {
+    font-size: 1.75rem;
+  }
+
+  mat-card-subtitle {
+    font-size: 1rem;
+    margin-top: .5rem;
+  }
+}
+
+mat-card-actions {
+  justify-content: center;
+  margin-top: .75rem;
+}
+
 mat-card-header {
   display: flex;
   justify-content: center;
@@ -11,4 +34,14 @@ mat-card-header {
 mat-progress-spinner {
   display: block;
   margin: 30px auto;
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }

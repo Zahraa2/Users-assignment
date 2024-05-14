@@ -1,15 +1,12 @@
 <div class="users-table">
-  <mat-progress-bar *ngIf="isLoadingResults" mode="indeterminate"></mat-progress-bar>
 
-  <div class="desktop-view" *ngIf="!isLoadingResults">
+  <div class="desktop-view">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-      <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> ID </th>
         <td mat-cell *matCellDef="let user"> {{user.id}} </td>
       </ng-container>
 
-      <!-- Avatar Column -->
       <ng-container matColumnDef="avatar">
         <th mat-header-cell *matHeaderCellDef> Avatar </th>
         <td mat-cell *matCellDef="let user">
@@ -17,19 +14,16 @@
         </td>
       </ng-container>
 
-      <!-- First Name Column -->
       <ng-container matColumnDef="first_name">
         <th mat-header-cell *matHeaderCellDef> First Name </th>
         <td mat-cell *matCellDef="let user"> {{user.first_name}} </td>
       </ng-container>
 
-      <!-- Last Name Column -->
       <ng-container matColumnDef="last_name">
         <th mat-header-cell *matHeaderCellDef> Last Name </th>
         <td mat-cell *matCellDef="let user"> {{user.last_name}} </td>
       </ng-container>
 
-      <!-- Email Column -->
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef> Email </th>
         <td mat-cell *matCellDef="let user"> {{user.email}} </td>
@@ -41,7 +35,7 @@
     </table>
   </div>
 
-  <div class="mobile-view"  *ngIf="!isLoadingResults">
+  <div class="mobile-view">
     <mat-card *ngFor="let user of dataSource.data" (click)="goToUserDetails(user)" class="user-card">
       <mat-card-header>
         <div mat-card-avatar class="avatar">
@@ -56,10 +50,16 @@
     </mat-card>
   </div>
 
-  <mat-paginator *ngIf="!isLoadingResults" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-
-    <div class="spinner" *ngIf="isLoadingResults">
-      <mat-spinner></mat-spinner>
-    </div>
+  <mat-paginator
+  [pageSizeOptions]="[pageSize]"
+  [pageSize]="pageSize"
+  [pageIndex]="currentPagePaginator"
+  [length]="totalItems"
+  (page)="setPageSize($event)"
+  aria-label="Select page"
+  showFirstLastButtons="false"
+  hidePageSize="true"
+  class="w-full">
+</mat-paginator>
 
 </div>

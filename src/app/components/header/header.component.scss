@@ -1,12 +1,17 @@
 mat-toolbar {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-}
+  height: 70px;
+  mat-form-field {
+    width: 300px;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
 
-.search-container {
-  min-width: 250px;
-}
+  .search-bar {
+    margin-top: 1.5rem;
 
-mat-form-field {
-  width: 100%;
+  }
+
 }

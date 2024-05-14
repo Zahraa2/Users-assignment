@@ -1,10 +1,13 @@
 <mat-toolbar color="primary">
-  <span>User Dashboard</span>
-  <!-- Search Input on the right side of the header -->
-  <span class="search-container">
-    <mat-form-field appearance="outline">
-      <mat-label>Search by ID</mat-label>
-      <input matInput (input)="search($event)" placeholder="Enter User ID">
+  <div>
+    <span>User Dashboard</span>
+  </div>
+  <div class="search-bar">
+    <!-- <mat-icon class="search-button">search</mat-icon> -->
+    <mat-form-field >
+      <mat-label >Search User by ID</mat-label>
+      <input matInput (input)="search($event)" placeholder="Enter user ID" />
     </mat-form-field>
-  </span>
+  </div>
+
 </mat-toolbar>
